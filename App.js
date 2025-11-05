@@ -1,20 +1,20 @@
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { ThemeProvider } from '@rneui/themed';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { EntryProvider } from './src/context/EntryContext';
+import AppNavigator from './src/navigation/AppNavigator';
+import { lightTheme } from './src/utils/theme';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider>
+      <ThemeProvider theme={lightTheme}>
+        <EntryProvider>
+          <AppNavigator />
+          <StatusBar style="light" />
+        </EntryProvider>
+      </ThemeProvider>
+    </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
